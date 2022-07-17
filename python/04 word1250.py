@@ -1,5 +1,7 @@
 # pip install requests
 # pip install beautifulsoup4
+# pip install pyinstaller
+# pyinstaller -F '.\04 word1250.py'
 from bs4 import BeautifulSoup
 import requests
 import random
