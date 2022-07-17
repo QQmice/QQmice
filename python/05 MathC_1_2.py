@@ -38,7 +38,7 @@ q2List = [30, 45, 60]
 
 print('\n輸入exit即可離開\n\n所有答案以分數表示\n\n根號x請以sqrt(x)輸入,例如根號3請書輸入sqrt(3)，分母不可有根號\n')
 
-userTestTimes = input('請輸入測驗次數 = ?')
+userTestTimes = input('請輸入測驗次數 = ? ')
 if not userTestTimes.isdigit():  # if not , str.isdigit()判斷是否是數字
     print('\n輸入次數非數字\n')
 else:
@@ -54,7 +54,7 @@ else:
 
         start = time.time()  # 此題起時
         # time.sleep(60) # 秒
-        userAns = input('\n請輸入' + question + ' = ?')
+        userAns = input('\n請輸入' + question + ' = ? ')
         if userAns == 'exit':  # exit 可離開
             break
         end = time.time()  # 此題迄時
@@ -73,5 +73,5 @@ else:
     TotalElapsedTime = round(TotalEnd-TotalStart, 1)  # 總花費時間
     print('\n測驗 ' + str(testTimes) + ' 次，共花費 ' + str(TotalElapsedTime) +
           ' 秒\n答對 ' + str(rightTimes) + ' 題，答錯 ' + str(errorTimes) + ' 題，正確率 ' +
-          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) +
-          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n')
+          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) + # 防分母0之處理
+          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n') # 防分母0之處理

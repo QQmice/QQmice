@@ -37,7 +37,7 @@ for i in range(0, listLen):
 
 print('\n輸入exit即可離開\n\n大小寫要注意\n\n因為使用BeautifulSoup須保持網路連線\n')
 
-userTestTimes = input('請輸入測驗次數 = ?')
+userTestTimes = input('請輸入測驗次數 = ? ')
 wordListLen = len(wordList)
 if not userTestTimes.isdigit():  # if not , str.isdigit()判斷是否是數字
     print('\n輸入次數非數字\n')
@@ -75,5 +75,5 @@ else:
     TotalElapsedTime = round(TotalEnd-TotalStart, 1)  # 總花費時間
     print('\n測驗 ' + str(testTimes) + ' 次，共花費 ' + str(TotalElapsedTime) +
           ' 秒\n答對 ' + str(rightTimes) + ' 題，答錯 ' + str(errorTimes) + ' 題，正確率 ' +
-          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) +
-          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n')
+          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) + # 防分母0之處理
+          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n') # 防分母0之處理
