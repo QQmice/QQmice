@@ -38,10 +38,10 @@ for i in range(0, listLen):
 print('\n輸入exit即可離開\n\n大小寫要注意\n\n因為使用BeautifulSoup須保持網路連線\n')
 
 userTestPos = input('請輸入測驗起點(1~13) = ? ')
-userTestTimes = 100
+userTestTimes = 100  # 每次測驗題數,餘數則會不足
 wordListLen = len(wordList)
 if not userTestPos.isdigit():  # if not , str.isdigit()判斷是否是數字
-    print('\n輸入起點非數字\n')
+    print('\n輸入起點非正整數\n')
 elif (int(userTestPos) < 1) or (int(userTestPos)-1 > wordListLen//userTestTimes):
     print('\n輸入起點超過範圍' + '\n')
 else:
@@ -49,18 +49,19 @@ else:
     testTimes = 0  # 測驗次數
     rightTimes = 0  # 正確次數
     errorTimes = 0  # 錯誤次數
-    startPos = (int(userTestPos)-1)*100
-    endPos = startPos+99 if startPos+99 < wordListLen else wordListLen -1 
+    startPos = (int(userTestPos)-1)*userTestTimes
+    endPos = startPos + userTestTimes - 1 if startPos + \
+        userTestTimes - 1 < wordListLen else wordListLen - 1  # len 要-1
     userTestTimes = endPos - startPos + 1
     for i in range(1, int(userTestTimes) + 1):  # range要+1
-        rand = random.randint(startPos, endPos)  # random len 要-1
+        rand = random.randint(startPos, endPos)
         qList = wordList.pop(rand)  # 去掉此次以免重複
-        endPos -= 1
+        endPos -= 1 # 從list拿出後，亂數範圍-1
         qIndex = qList[0]  # 索引
         question = qList[2]  # 題目
         ans = qList[1]  # 答案
         start = time.time()  # 此題起時
-        # time.sleep(60) # 秒
+        # time.sleep(60) # 60秒
         userAns = input('\n請輸入 ' + question + ' 的英文 = ? ')
         if userAns == 'exit':  # exit 可離開
             break
@@ -80,5 +81,5 @@ else:
     TotalElapsedTime = round(TotalEnd-TotalStart, 1)  # 總花費時間
     print('\n測驗 ' + str(testTimes) + ' 次，共花費 ' + str(TotalElapsedTime) +
           ' 秒\n答對 ' + str(rightTimes) + ' 題，答錯 ' + str(errorTimes) + ' 題，正確率 ' +
-          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) + # 防分母0之處理
-          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n') # 防分母0之處理
+          ('0' if testTimes == 0 else str(100*round(rightTimes/testTimes, 2))) +  # 防分母0之處理
+          ' %，平均每題作答時間 ' + ('0' if testTimes == 0 else str(round(TotalElapsedTime/testTimes, 1))) + ' 秒\n')  # 防分母0之處理
