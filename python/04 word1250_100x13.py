@@ -50,9 +50,12 @@ else:
     rightTimes = 0  # 正確次數
     errorTimes = 0  # 錯誤次數
     startPos = (int(userTestPos)-1)*100
+    endPos = startPos+99 if startPos+99 < wordListLen else wordListLen -1 
+    userTestTimes = endPos - startPos + 1
     for i in range(1, int(userTestTimes) + 1):  # range要+1
-        rand = random.randint(startPos, startPos+99)  # random len 要-1
+        rand = random.randint(startPos, endPos)  # random len 要-1
         qList = wordList.pop(rand)  # 去掉此次以免重複
+        endPos -= 1
         qIndex = qList[0]  # 索引
         question = qList[2]  # 題目
         ans = qList[1]  # 答案
