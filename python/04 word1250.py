@@ -71,6 +71,7 @@ else:
             errorTimes += 1
         print('答案是 ' + ans + ' , ' +
               goodJob + '共花費 ' + str(elapsedTime) + ' 秒')
+        wordListLen -= 1
     TotalEnd = time.time()  # 總時間迄時
     TotalElapsedTime = round(TotalEnd-TotalStart, 1)  # 總花費時間
     print('\n測驗 ' + str(testTimes) + ' 次，共花費 ' + str(TotalElapsedTime) +
