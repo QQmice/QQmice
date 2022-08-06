@@ -4,7 +4,7 @@ import random
 import time
 
 wordList = []  # 宣告list為空
-with open('word309B1B2.txt', mode='r', encoding='utf-8') as file:
+with open('06 word309B1B2.txt', mode='r', encoding='utf-8') as file:
     for line in file:
         list = line.split("￡")
         wordList.append(list)
